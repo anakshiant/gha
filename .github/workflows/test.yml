@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  name: run e2e tests
+  runs-on: ubuntu-latest
+  timeout-minutes: 40
+  services:
+    mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: paragon_ci_password
+          MYSQL_DATABASE: paragon_ci
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: password
+        ports:
+          - 3306:3006
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+  steps:
+    - name: checkout
+      uses: actions/checkout@master
+      with:
+        ref: ${{ github.ref }}
+        clean: false
+
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.16.0
+
+    - name: yarn install
+=     run: |
+        npm install
+    - name: yarn install
+=     run: |
+        node index.js
