@@ -12,7 +12,6 @@ jobs:
       mysql:
           image: mysql:5.7
           env:
-            MYSQL_ROOT_PASSWORD: paragon_ci_password
             MYSQL_DATABASE: paragon_ci
             MYSQL_USER: admin
             MYSQL_PASSWORD: password
