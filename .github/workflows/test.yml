@@ -8,21 +8,21 @@ jobs:
     name: make it real
     runs-on: ubuntu-latest
     timeout-minutes: 40
-    # services:
-    #   mysql:
-    #       image: mysql:5.7
-    #       env:
-    #         MYSQL_ROOT_PASSWORD: paragon_ci_password
-    #         MYSQL_DATABASE: paragon_ci
-    #         MYSQL_USER: admin
-    #         MYSQL_PASSWORD: password
-    #       ports:
-    #         - 3306:3006
-    #       options: >-
-    #         --health-cmd="mysqladmin ping"
-    #         --health-interval=10s
-    #         --health-timeout=5s
-    #         --health-retries=5
+    services:
+      mysql:
+          image: mysql:5.7
+          env:
+            MYSQL_ROOT_PASSWORD: paragon_ci_password
+            MYSQL_DATABASE: paragon_ci
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: password
+          ports:
+            - 3306:3006
+          options: >-
+            --health-cmd="mysqladmin ping"
+            --health-interval=10s
+            --health-timeout=20s
+            --health-retries=5
     steps:
       - name: checkout
         uses: actions/checkout@master
