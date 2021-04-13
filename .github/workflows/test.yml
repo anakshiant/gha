@@ -5,7 +5,7 @@ on:
 
 jobs:
   ok:
-    name: run e2e tests
+    name: make it real
     runs-on: ubuntu-latest
     timeout-minutes: 40
     services:
@@ -35,10 +35,10 @@ jobs:
         with:
           node-version: 12.16.0
 
-      - name: yarn install
+      - name: npm install
         run: |
           npm install
 
-      - name: yarn install
+      - name: start
         run: |
           node index.js

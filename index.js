@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
   if (error) {
-    console.error("error is there");
+    console.error("error is there", error);
   }
 
   connection.query("select * from users;");
