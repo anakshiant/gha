@@ -35,8 +35,9 @@ jobs:
         node-version: 12.16.0
 
     - name: yarn install
-=     run: |
+      run: |
         npm install
+
     - name: yarn install
-=     run: |
+      run: |
         node index.js
